@@ -115,21 +115,40 @@ document.getElementById('get-started-btn').addEventListener('click', () => {
 });
 
 // Contact form submission
-document.getElementById('contact-form').addEventListener('submit', (e) => {
+document.getElementById('contact-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   
-  // Get form data
-  const formData = new FormData(e.target);
-  const data = {
-    name: formData.get('name'),
-    email: formData.get('email'),
-    lessonType: formData.get('lesson-type'),
-    message: formData.get('message')
-  };
+  const form = e.target;
+  const formData = new FormData(form);
+  const submitBtn = form.querySelector('.submit-btn');
+  const originalText = submitBtn.textContent;
   
-  // Simulate form submission
-  alert(`Thank you, ${data.name}! Your message has been received. We'll get back to you soon!`);
-  e.target.reset();
+  // Show loading state
+  submitBtn.textContent = 'Sending...';
+  submitBtn.disabled = true;
+  
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    
+    if (response.ok) {
+      alert(`Thank you, ${formData.get('name')}! Your message has been received. We'll get back to you soon!`);
+      form.reset();
+    } else {
+      throw new Error('Form submission failed');
+    }
+  } catch (error) {
+    alert('There was an error sending your message. Please try again later.');
+  } finally {
+    // Reset button state
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  }
 });
 
 // Conway's Game of Life animation

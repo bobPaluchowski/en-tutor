@@ -72,18 +72,18 @@
   <section id="contact" class="contact-section">
     <div class="container">
       <h2>Get in Touch</h2>
-      <form class="contact-form" id="contact-form">
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required>
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
+          <input type="email" id="email" name="_replyto" required>
         </div>
         <div class="form-group">
           <label for="lesson-type">Lesson Type</label>
-          <select id="lesson-type" name="lesson-type" required>
+          <select id="lesson-type" name="lesson_type" required>
             <option value="">Select a lesson type</option>
             <option value="english">English</option>
             <option value="programming">Programming</option>
@@ -94,6 +94,9 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="5" required></textarea>
         </div>
+        <!-- Hidden fields for Formspree -->
+        <input type="hidden" name="_subject" value="New tutoring inquiry">
+        <input type="hidden" name="_next" value="#contact"></div>
         <button type="submit" class="submit-btn">Send Message</button>
       </form>
     </div>

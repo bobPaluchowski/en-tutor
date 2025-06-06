@@ -33,31 +33,33 @@
 
   <!-- Hero Section -->
   <section id="home" class="hero">
-    <div class="hero-background">
-      <!-- TODO: Replace with actual stock image -->
-      <div class="background-image"></div>
-    </div>
-    
-    <div class="split-container">
-      <div class="split-panel english-panel" id="english-panel">
-        <div class="panel-content">
+    <div class="image-slider-container">
+      <!-- Base image (English theme) -->
+      <div class="base-image">
+        <!-- TODO: Replace with actual English lesson themed image -->
+        <div class="image-placeholder english-bg"></div>
+        <div class="panel-content english-content">
           <h1 class="panel-title">English Lessons</h1>
           <p class="panel-description">Master the English language with personalized tutoring</p>
           <div class="flag-decoration">🇬🇧 🇺🇸</div>
         </div>
       </div>
       
-      <div class="slider-handle" id="slider-handle" tabindex="0" role="slider" aria-label="Split panel slider">
-        <div class="handle-grip"></div>
-      </div>
-      
-      <div class="split-panel programming-panel" id="programming-panel">
+      <!-- Overlay image (Programming theme) -->
+      <div class="overlay-image" id="overlay-image">
+        <!-- TODO: Replace with actual programming themed image -->
+        <div class="image-placeholder programming-bg"></div>
         <canvas id="game-of-life" class="game-of-life-canvas"></canvas>
-        <div class="panel-content">
+        <div class="panel-content programming-content">
           <h1 class="panel-title">$ Programming Lessons</h1>
           <p class="panel-description">> Learn to code with expert guidance</p>
           <div class="terminal-prompt">user@tutoring:~$ _</div>
         </div>
+      </div>
+      
+      <!-- Slider handle -->
+      <div class="slider-handle" id="slider-handle" tabindex="0" role="slider" aria-label="Image reveal slider">
+        <div class="handle-grip"></div>
       </div>
     </div>
     

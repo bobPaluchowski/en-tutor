@@ -106,52 +106,55 @@ body {
   flex-direction: column;
 }
 
-.hero-background {
+.image-slider-container {
+  flex: 1;
+  position: relative;
+  margin-top: 80px;
+  overflow: hidden;
+}
+
+.base-image,
+.overlay-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.background-image {
+.base-image {
+  z-index: 1;
+}
+
+.overlay-image {
+  z-index: 2;
+  clip-path: inset(0 0 0 50%);
+  transition: none;
+}
+
+.image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  /* TODO: Replace with actual stock image */
   background-size: cover;
   background-position: center;
 }
 
-.split-container {
-  flex: 1;
-  display: flex;
-  position: relative;
-  margin-top: 80px;
+.english-bg {
+  background: linear-gradient(135deg, rgba(220, 53, 69, 0.2), rgba(40, 167, 69, 0.2)),
+              linear-gradient(45deg, #f8f9fa, #e9ecef);
+  /* TODO: Replace with actual English lesson themed image */
 }
 
-.split-panel {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: width 0.3s ease;
-}
-
-.english-panel {
-  width: 50%;
-  background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(40, 167, 69, 0.1));
-  font-family: 'Georgia', serif;
-}
-
-.programming-panel {
-  width: 50%;
-  background: #1a1a1a;
-  color: #00ff00;
-  font-family: 'Courier New', monospace;
-  position: relative;
+.programming-bg {
+  background: linear-gradient(135deg, rgba(0, 255, 0, 0.1), rgba(0, 123, 255, 0.1)),
+              #1a1a1a;
+  /* TODO: Replace with actual programming themed image */
 }
 
 .game-of-life-canvas {
@@ -161,12 +164,23 @@ body {
   width: 100%;
   height: 100%;
   opacity: 0.3;
+  z-index: 1;
 }
 
 .panel-content {
   text-align: center;
-  z-index: 2;
+  z-index: 3;
   position: relative;
+}
+
+.english-content {
+  font-family: 'Georgia', serif;
+  color: #333;
+}
+
+.programming-content {
+  font-family: 'Courier New', monospace;
+  color: #00ff00;
 }
 
 .panel-title {
@@ -210,7 +224,8 @@ body {
   align-items: center;
   justify-content: center;
   z-index: 10;
-  transition: transform 0.3s ease;
+  transition: none;
+  will-change: transform;
 }
 
 .slider-handle:active {

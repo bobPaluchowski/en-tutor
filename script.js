@@ -16,15 +16,14 @@ document.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
-// Split slider functionality
+// Image overlay slider functionality
 const sliderHandle = document.getElementById('slider-handle');
-const englishPanel = document.getElementById('english-panel');
-const programmingPanel = document.getElementById('programming-panel');
-const splitContainer = document.querySelector('.split-container');
+const overlayImage = document.getElementById('overlay-image');
+const sliderContainer = document.querySelector('.image-slider-container');
 
 let isDragging = false;
-let startX = 0;
 let currentPosition = 50; // Start at center (50%)
+let animationId = null;
 
 // Mouse events
 sliderHandle.addEventListener('mousedown', startDrag);
@@ -41,49 +40,61 @@ sliderHandle.addEventListener('keydown', handleKeyboard);
 
 function startDrag(e) {
   isDragging = true;
-  startX = e.clientX;
   sliderHandle.style.cursor = 'grabbing';
 }
 
 function startDragTouch(e) {
   e.preventDefault();
   isDragging = true;
-  startX = e.touches[0].clientX;
 }
 
 function drag(e) {
   if (!isDragging) return;
   
-  const containerRect = splitContainer.getBoundingClientRect();
-  const newPosition = ((e.clientX - containerRect.left) / containerRect.width) * 100;
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+  }
   
-  updateSliderPosition(Math.max(10, Math.min(90, newPosition)));
+  animationId = requestAnimationFrame(() => {
+    const containerRect = sliderContainer.getBoundingClientRect();
+    const newPosition = ((e.clientX - containerRect.left) / containerRect.width) * 100;
+    updateSliderPosition(Math.max(5, Math.min(95, newPosition)));
+  });
 }
 
 function dragTouch(e) {
   if (!isDragging) return;
   e.preventDefault();
   
-  const containerRect = splitContainer.getBoundingClientRect();
-  const newPosition = ((e.touches[0].clientX - containerRect.left) / containerRect.width) * 100;
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+  }
   
-  updateSliderPosition(Math.max(10, Math.min(90, newPosition)));
+  animationId = requestAnimationFrame(() => {
+    const containerRect = sliderContainer.getBoundingClientRect();
+    const newPosition = ((e.touches[0].clientX - containerRect.left) / containerRect.width) * 100;
+    updateSliderPosition(Math.max(5, Math.min(95, newPosition)));
+  });
 }
 
 function stopDrag() {
   isDragging = false;
   sliderHandle.style.cursor = 'grab';
+  if (animationId) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
 }
 
 function handleKeyboard(e) {
   switch(e.key) {
     case 'ArrowLeft':
       e.preventDefault();
-      updateSliderPosition(Math.max(10, currentPosition - 5));
+      updateSliderPosition(Math.max(5, currentPosition - 5));
       break;
     case 'ArrowRight':
       e.preventDefault();
-      updateSliderPosition(Math.min(90, currentPosition + 5));
+      updateSliderPosition(Math.min(95, currentPosition + 5));
       break;
   }
 }
@@ -91,9 +102,8 @@ function handleKeyboard(e) {
 function updateSliderPosition(position) {
   currentPosition = position;
   
-  // Update panel widths
-  englishPanel.style.width = `${position}%`;
-  programmingPanel.style.width = `${100 - position}%`;
+  // Update overlay image clip-path to reveal right image when slider moves left
+  overlayImage.style.clipPath = `inset(0 0 0 ${position}%)`;
   
   // Update slider handle position
   sliderHandle.style.left = `${position}%`;

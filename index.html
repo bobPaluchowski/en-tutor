@@ -1,15 +1,151 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <title>replit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IT & English Tutoring | Professional Lessons</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  Hello world
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo">R</span> <!-- TODO: Replace with actual logo -->
+      </div>
+      <div class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#lessons" class="nav-link">Lessons</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-background">
+      <!-- TODO: Replace with actual stock image -->
+      <div class="background-image"></div>
+    </div>
+    
+    <div class="split-container">
+      <div class="split-panel english-panel" id="english-panel">
+        <div class="panel-content">
+          <h1 class="panel-title">English Lessons</h1>
+          <p class="panel-description">Master the English language with personalized tutoring</p>
+          <div class="flag-decoration">🇬🇧 🇺🇸</div>
+        </div>
+      </div>
+      
+      <div class="slider-handle" id="slider-handle" tabindex="0" role="slider" aria-label="Split panel slider">
+        <div class="handle-grip"></div>
+      </div>
+      
+      <div class="split-panel programming-panel" id="programming-panel">
+        <canvas id="game-of-life" class="game-of-life-canvas"></canvas>
+        <div class="panel-content">
+          <h1 class="panel-title">$ Programming Lessons</h1>
+          <p class="panel-description">> Learn to code with expert guidance</p>
+          <div class="terminal-prompt">user@tutoring:~$ _</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="cta-container">
+      <button class="cta-button" id="get-started-btn">Get Started</button>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Get in Touch</h2>
+      <form class="contact-form" id="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="lesson-type">Lesson Type</label>
+          <select id="lesson-type" name="lesson-type" required>
+            <option value="">Select a lesson type</option>
+            <option value="english">English</option>
+            <option value="programming">Programming</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials-section">
+    <div class="container">
+      <h2>What Students Say</h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-photo">
+            <!-- TODO: Replace with actual student photo -->
+            <div class="photo-placeholder">JS</div>
+          </div>
+          <h3>John Smith</h3>
+          <p>"The programming lessons helped me land my first developer job. Excellent teaching!"</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-photo">
+            <!-- TODO: Replace with actual student photo -->
+            <div class="photo-placeholder">EM</div>
+          </div>
+          <h3>Emma Martinez</h3>
+          <p>"My English improved dramatically. The personalized approach made all the difference."</p>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-photo">
+            <!-- TODO: Replace with actual student photo -->
+            <div class="photo-placeholder">DW</div>
+          </div>
+          <h3>David Wilson</h3>
+          <p>"Both English and programming lessons were fantastic. Highly recommended!"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-copyright">
+          <p>&copy; 2024 IT & English Tutoring. All rights reserved.</p>
+        </div>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Facebook">📘</a>
+          <a href="#" class="social-link" aria-label="LinkedIn">💼</a>
+          <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+          <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 

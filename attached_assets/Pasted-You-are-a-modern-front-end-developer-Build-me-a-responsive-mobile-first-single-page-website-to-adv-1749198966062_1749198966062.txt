@@ -1,0 +1,37 @@
+You are a modern front-end developer. Build me a responsive, mobile-first single-page website to advertise my IT & English tutoring business. Follow these requirements exactly:
+
+1. **Overall Layout & Navigation**
+   - Mobile-first design that scales up gracefully to desktop.
+   - Top navigation bar with:
+     - A placeholder logo (“R”) on the top-left.
+     - Menu items on the right (e.g. “Home,” “About,” “Lessons,” “Testimonials,” “Contact”).
+   - Footer with copyright and social links.
+
+2. **Hero Section**
+   - Full-width “split slider” hero layout:
+     - A draggable vertical slider starting at center.
+     - Left panel: English lessons theme (e.g. subtle UK/US flags, serif typography).
+     - Right panel: Programming lessons theme (Linux-terminal style: monospace font, dark background, green text).
+   - Background animation behind the programming panel using a Conway’s Game of Life glider pattern (CSS Canvas or WebGL).
+   - Placeholder stock image behind both panels (centered).
+   - Smooth CSS transition/animation when sliding.
+   - Prominent “Get Started” call-to-action button centered below slider; clicking scrolls to the contact form.
+
+3. **Split Interaction Behavior**
+   - When slider handle is dragged left, reveal more of the programming (right) panel; when dragged right, reveal more of the English (left) panel.
+   - Ensure keyboard accessibility for the slider (arrow keys).
+   - Default slider position: exactly centered.
+
+4. **Content Sections (below hero)**
+   1. **Contact Form**  
+      - Simple fields: Name, Email, Lesson Type (dropdown: English / Programming), Message, Submit button.
+   2. **Testimonials**  
+      - Carousel or grid of at least 3 testimonial cards with student photos, names, and quotes.
+   3. **Social Media Links**  
+      - Icons linking to Facebook, LinkedIn, Twitter, Instagram (use placeholder `#`).
+
+5. **Styling & Interaction**
+   - Use modern CSS (Flexbox or Grid) and vanilla JavaScript (no frameworks required).
+   - Mobile navigation should collapse into a hamburger menu.
+   - Smooth scroll effect for in-page links.
+   - Use placeholder assets for logo and images; mark them clearly in code as TODO.
